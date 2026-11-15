@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which Brain Are You? | weird.likethis</title>
+<meta property="og:title" content="Which brain are you? A 1-minute test by weird.likethis">
+<meta property="og:description" content="Do you think in pictures, sound, or silence? Find your Lumi brain type.">
+<meta name="description" content="A 1-minute test: do you see pictures, hear sounds, or think in silence? Find your Lumi brain type.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg1:#090d1c; --bg2:#14213f; --card:#121a33; --line:#2b3a66; --txt:#eef1f7; --mut:#aab4cc; --yel:#ffd45e; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { background:#090d1c; } html, body { min-height:100%; }
+  body { font-family:'Poppins', system-ui, sans-serif; color:var(--txt);
+         background:radial-gradient(ellipse at 50% -10%, #22305c 0%, var(--bg2) 35%, var(--bg1) 80%) fixed;
+         display:flex; justify-content:center; padding:24px 16px 40px; }
+  .wrap { width:100%; max-width:460px; }
+  .tag { display:inline-block; background:var(--yel); color:#141a2e; font-weight:800; font-size:12px; letter-spacing:3px;
+         padding:7px 16px; border-radius:30px; }
+  .top { text-align:center; margin-bottom:18px; }
+  h1 { font-size:34px; line-height:1.1; font-weight:800; margin:18px 0 10px; }
+  h1 em { font-style:normal; color:var(--yel); }
+  p.lead { color:var(--mut); font-size:15px; line-height:1.5; }
+  .stars { position:fixed; inset:0; pointer-events:none; z-index:-1; }
+  .btn { display:block; width:100%; border:none; cursor:pointer; font-family:inherit; font-weight:700; font-size:17px;
+         padding:17px; border-radius:18px; background:var(--yel); color:#141a2e; transition:transform .12s; }
+  .btn:active { transform:scale(.97); }
+  .btn.ghost { background:transparent; color:var(--txt); border:2px solid var(--line); }
+  .lumis { display:flex; justify-content:center; gap:6px; margin:22px 0 26px; }
+  .lumis svg { width:96px; height:auto; animation:bob 2.4s ease-in-out infinite; }
+  .lumis svg:nth-child(2) { animation-delay:.4s; } .lumis svg:nth-child(3) { animation-delay:.8s; }
+  @keyframes bob { 50% { transform:translateY(-6px); } }
+  .meta { color:var(--mut); font-size:13px; text-align:center; margin-top:12px; }
+  .prog { height:8px; background:#1d2850; border-radius:8px; overflow:hidden; margin:6px 0 22px; }
+  .prog i { display:block; height:100%; width:0; background:var(--yel); border-radius:8px; transition:width .35s; }
+  .qnum { color:var(--yel); font-weight:700; font-size:13px; letter-spacing:3px; }
+  .qtext { font-size:24px; font-weight:700; line-height:1.25; margin:8px 0 20px; }
+  .opt { display:flex; align-items:center; gap:14px; width:100%; text-align:left; font-family:inherit; font-size:16px; font-weight:600;
+         color:var(--txt); background:var(--card); border:2px solid var(--line); border-radius:16px; padding:16px; margin-bottom:12px;
+         cursor:pointer; transition:transform .12s, border-color .15s, background .15s; }
+  .opt:hover { border-color:#4a5d99; }
+  .opt:active { transform:scale(.98); }
+  .opt.pick { border-color:var(--yel); background:#1d2547; }
+  .opt .em { font-size:26px; width:34px; text-align:center; flex:none; }
+  .fade { animation:fade .35s ease; }
+  @keyframes fade { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+  .res { text-align:center; }
+  .res .kicker { color:var(--mut); font-size:13px; letter-spacing:3px; font-weight:700; margin-top:8px; }
+  .res h2 { font-size:36px; font-weight:800; margin:6px 0 4px; }
+  .res .one { font-size:17px; font-weight:600; color:var(--yel); margin-bottom:14px; }
+  .res svg.big { width:150px; height:auto; margin:6px auto 8px; display:block; animation:bob 2.4s ease-in-out infinite; }
+  .res p.desc { color:#d6dcea; font-size:15px; line-height:1.6; margin-bottom:20px; text-align:left; }
+  .bars { background:var(--card); border:2px solid var(--line); border-radius:18px; padding:16px 18px; margin-bottom:18px; text-align:left; }
+  .bar { display:flex; align-items:center; gap:12px; margin:8px 0; font-size:14px; font-weight:600; }
+  .bar span { width:112px; flex:none; color:var(--mut); }
+  .bar .t { flex:1; height:12px; background:#1d2850; border-radius:8px; overflow:hidden; }
+  .bar .t i { display:block; height:100%; border-radius:8px; width:0; transition:width .9s ease; }
+  .fact { background:#0f1630; border-left:4px solid var(--yel); border-radius:10px; padding:12px 14px; font-size:13.5px; color:#cbd3e6;
+          line-height:1.55; margin-bottom:20px; text-align:left; }
+  .row { display:grid; gap:10px; }
+  .note { color:#7f8aa6; font-size:12px; line-height:1.5; margin-top:18px; text-align:center; }
+  a.follow { text-decoration:none; text-align:center; }
+  .copied { color:var(--yel); font-size:13px; font-weight:600; height:18px; margin-top:6px; text-align:center; }
+</style>
+</head>
+<body>
+<svg class="stars" id="stars" aria-hidden="true"></svg>
+<div class="wrap" id="app"></div>
+
+<script>
+const IG = "https://www.instagram.com/weird.likethis/";
+
+function lumi(color, mood, glow) {
+  glow = glow == null ? 1 : glow;
+  const eyes = {
+    happy: '<path d="M38 57 q7 -8 14 0 M68 57 q7 -8 14 0" stroke="#2a2338" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M48 72 q12 12 24 0" stroke="#2a2338" stroke-width="5" fill="none" stroke-linecap="round"/>',
+    calm: '<path d="M38 56 q7 6 14 0 M68 56 q7 6 14 0" stroke="#2a2338" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M52 74 q8 6 16 0" stroke="#2a2338" stroke-width="5" fill="none" stroke-linecap="round"/>',
+    look: '<circle cx="48" cy="57" r="6" fill="#2a2338"/><circle cx="78" cy="57" r="6" fill="#2a2338"/><circle cx="64" cy="76" r="5" fill="#2a2338"/>'
+  }[mood || 'happy'];
+  return `<svg viewBox="0 0 120 210" xmlns="http://www.w3.org/2000/svg">
+    <defs><radialGradient id="g${color.slice(1)}${mood}" cx="50%" cy="45%" r="50%">
+      <stop offset="0" stop-color="${color}" stop-opacity="${0.55*glow}"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></radialGradient>
+      <linearGradient id="b${color.slice(1)}${mood}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a5690"/><stop offset="1" stop-color="#2c3460"/></linearGradient></defs>
+    <circle cx="60" cy="62" r="60" fill="url(#g${color.slice(1)}${mood})"/>
+    <circle cx="60" cy="62" r="42" fill="${color}"/>
+    <circle cx="44" cy="44" r="10" fill="#fff" opacity=".35"/>
+    ${eyes}
+    <rect x="43" y="102" width="34" height="18" rx="4" fill="#9aa3b8"/>
+    <path d="M43 108 L77 105 M43 114 L77 111" stroke="#6b7389" stroke-width="3"/>
+    <path d="M24 140 l-14 40 M96 140 l14 40" stroke="#3a4470" stroke-width="12" stroke-linecap="round"/>
+    <rect x="18" y="120" width="84" height="84" rx="38" fill="url(#b${color.slice(1)}${mood})"/>
+    <rect x="48" y="146" width="24" height="7" rx="3.5" fill="${color}" opacity=".9"/>
+  </svg>`;
+}
+
+// each question scores one sense from 0 (none) to 2 (vivid)
+const Q = [
+  { s:'see', q:"Close your eyes and picture an apple. What do you get?", o:[
+    ["🍎","A bright, detailed apple, almost like a photo",2],["🌫️","A blurry, faded apple",1],["⬛","Nothing. I just know what an apple is",0]]},
+  { s:'see', q:"Now picture the face of someone you love.", o:[
+    ["🖼️","I can see their face clearly, even small details",2],["👤","Bits and pieces, it keeps slipping away",1],["❔","I can't see it, I just know who they are",0]]},
+  { s:'hear', q:"Play your favorite song in your head.", o:[
+    ["🎧","I hear it like my headphones are in",2],["🎵","A faint version, more like a memory",1],["🔇","Silence. I know the song, but hear nothing",0]]},
+  { s:'hear', q:"Imagine a dog barking right next to you.", o:[
+    ["🐕","I can actually hear the bark",2],["〰️","Kind of, very quiet",1],["🤐","Nothing comes through",0]]},
+  { s:'voice', q:"Reading this sentence right now... do you hear it in your head?", o:[
+    ["🗣️","Yes, a voice is reading it to me",2],["🤏","Sometimes, depends on what I read",1],["📄","No, the words just go in silently",0]]},
+  { s:'voice', q:"When you're thinking about your day, how does it happen?", o:[
+    ["💬","I talk it through in my head, like a conversation",2],["🔀","A mix of words and feelings",1],["💭","No words, more like ideas and feelings",0]]},
+  { s:'other', q:"Imagine the smell of fresh coffee.", o:[
+    ["☕","I can almost smell it",2],["👃","A hint of it, barely there",1],["🚫","I can't imagine smells at all",0]]},
+  { s:'other', q:"Imagine walking barefoot on warm sand.", o:[
+    ["🏖️","I can feel the warmth and the grains",2],["🦶","A vague feeling",1],["🫥","I don't feel anything",0]]},
+];
+
+const TYPES = {
+  movie: { name:"THE MOVIE MAKER", color:"#ffd45e", mood:"happy",
+    one:"Your mind runs in full HD, with sound.",
+    desc:"Pictures, sounds, sometimes even smells: your imagination is close to the real thing. You can replay memories like videos and probably get lost in daydreams. On the vivid end of the scale, this is sometimes called hyperphantasia." },
+  painter: { name:"THE PAINTER", color:"#ff9a6b", mood:"happy",
+    one:"You think in pictures.",
+    desc:"Your mind's eye is strong: faces, places and colors come easily, while sounds stay quieter. You probably remember where things were more than what was said." },
+  radio: { name:"THE RADIO", color:"#59e0c4", mood:"calm",
+    one:"Your head is never quiet.",
+    desc:"Songs, voices and a running commentary: your inner world is mostly sound and words. Pictures are weaker, but you can replay a conversation almost word for word." },
+  balanced: { name:"THE MIXER", color:"#9fb4ff", mood:"calm",
+    one:"A bit of everything, nothing too loud.",
+    desc:"You get some pictures, some sounds and some inner voice, usually fuzzy rather than sharp. That puts you close to the middle of the scale, where most people are." },
+  blueprint: { name:"THE BLUEPRINT", color:"#b08cff", mood:"look",
+    one:"You think in ideas, not pictures.",
+    desc:"Your mind works without much imagery: you know what an apple looks like, you just don't see it. Researchers call little or no visual imagery aphantasia, and no inner sound anauralia. It's not a problem, just a different way of thinking." }
+};
+
+const FACTS = {
+  movie:"In one large study, about 1 in 100 people reported no inner sound at all. You're at the opposite end.",
+  painter:"Visual and auditory imagery usually go together, but not always: some people are strong in one sense and weak in the other.",
+  radio:"Visual and auditory imagery usually go together, but not always: some people are strong in one sense and weak in the other.",
+  balanced:"Most people land near the middle of these scales. The extremes are the rare ones.",
+  blueprint:"In a survey of over 32,000 people, about 1 in 100 reported no visual imagery, and about 1 in 100 reported no auditory imagery."
+};
+
+let i = 0, score = { see:0, hear:0, voice:0, other:0 };
+const app = document.getElementById('app');
+
+function stars() {
+  const s = document.getElementById('stars'); let h = '';
+  for (let k = 0; k < 60; k++) {
+    const x = Math.random()*100, y = Math.random()*100, r = Math.random()*1.4+0.4;
+    h += `<circle cx="${x}%" cy="${y}%" r="${r}" fill="#fff" opacity="${(Math.random()*0.5+0.15).toFixed(2)}"/>`;
+  }
+  s.innerHTML = h;
+}
+
+function start() {
+  i = 0; score = { see:0, hear:0, voice:0, other:0 };
+  app.innerHTML = `<div class="top fade">
+      <span class="tag">WEIRD.LIKETHIS</span>
+      <h1>Which <em>brain</em> are you?</h1>
+      <p class="lead">8 quick questions. Close your eyes when asked.<br>Find out if you think in pictures, sound, or silence.</p>
+      <div class="lumis">${lumi('#ffd45e','happy')}${lumi('#59e0c4','calm')}${lumi('#b08cff','look',0.3)}</div>
+      <button class="btn" id="go">Start the test</button>
+      <div class="meta">Takes about 1 minute · free</div>
+    </div>`;
+  document.getElementById('go').onclick = ask;
+}
+
+function ask() {
+  const q = Q[i];
+  app.innerHTML = `<div class="fade">
+      <div class="qnum">QUESTION ${i+1} / ${Q.length}</div>
+      <div class="prog"><i style="width:${(i)/Q.length*100}%"></i></div>
+      <div class="qtext">${q.q}</div>
+      ${q.o.map((o,k)=>`<button class="opt" data-k="${k}"><span class="em">${o[0]}</span><span>${o[1]}</span></button>`).join('')}
+    </div>`;
+  requestAnimationFrame(()=>{ const b = app.querySelector('.prog i'); if (b) b.style.width = ((i+1)/Q.length*100)+'%'; });
+  app.querySelectorAll('.opt').forEach(b => b.onclick = () => {
+    b.classList.add('pick');
+    score[q.s] += q.o[+b.dataset.k][2];
+    setTimeout(() => { i++; i < Q.length ? ask() : result(); }, 260);
+  });
+}
+
+function pickType() {
+  const { see, hear, voice } = score;
+  if (see <= 1 && hear <= 1) return 'blueprint';
+  if (see >= 3 && hear >= 3) return 'movie';
+  if (see >= 3 && see > hear) return 'painter';
+  if ((hear >= 3 || voice >= 4) && hear + voice > see + 1) return 'radio';
+  return 'balanced';
+}
+
+function result() {
+  const key = pickType(), t = TYPES[key];
+  const rows = [["Pictures",score.see,"#ffd45e"],["Sound",score.hear,"#59e0c4"],["Inner voice",score.voice,"#9fb4ff"],["Smell & touch",score.other,"#ff9a6b"]];
+  app.innerHTML = `<div class="res fade">
+      <div class="kicker">YOUR BRAIN TYPE</div>
+      ${lumi(t.color, t.mood, key==='blueprint'?0.35:1).replace('<svg','<svg class="big"')}
+      <h2>${t.name}</h2>
+      <div class="one">${t.one}</div>
+      <p class="desc">${t.desc}</p>
+      <div class="bars">${rows.map(r=>`<div class="bar"><span>${r[0]}</span><div class="t"><i data-w="${r[1]/4*100}" style="background:${r[2]}"></i></div></div>`).join('')}</div>
+      <div class="fact"><b>Did you know?</b> ${FACTS[key]}</div>
+      <div class="row">
+        <a class="btn follow" href="${IG}" target="_blank" rel="noopener">Follow @weird.likethis for more brain tests</a>
+        <button class="btn" id="card" style="background:#fff">📸 Save card for your story</button>
+        <button class="btn ghost" id="copy">Copy my result</button>
+        <div class="copied" id="cp"></div>
+        <button class="btn ghost" id="again">Take it again</button>
+      </div>
+      <p class="note">Just for fun, not a diagnosis. Based on how researchers describe differences in mental imagery.</p>
+    </div>`;
+  setTimeout(()=>app.querySelectorAll('.bar i').forEach(b=>b.style.width=b.dataset.w+'%'),80);
+  document.getElementById('again').onclick = start;
+  document.getElementById('card').onclick = () => saveCard(key, t, rows);
+  document.getElementById('copy').onclick = async () => {
+    const txt = `I'm ${t.name} 💡 "${t.one}" Which brain are you? Find out with @weird.likethis`;
+    const cp = document.getElementById('cp');
+    try { await navigator.clipboard.writeText(txt); cp.textContent = "Copied! Paste it in your story 👀"; }
+    catch(e) { cp.textContent = txt; }
+  };
+}
+
+
+function rr(x, X, Y, w, h, r) { x.beginPath(); x.moveTo(X+r,Y); x.arcTo(X+w,Y,X+w,Y+h,r); x.arcTo(X+w,Y+h,X,Y+h,r); x.arcTo(X,Y+h,X,Y,r); x.arcTo(X,Y,X+w,Y,r); x.closePath(); }
+async function saveCard(key, t, rows) {
+  const cp = document.getElementById('cp'); cp.textContent = "Making your card…";
+  const W = 1080, H = 1920, cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+  const x = cv.getContext('2d');
+  const g = x.createRadialGradient(540, 300, 50, 540, 700, 1500);
+  g.addColorStop(0, '#22305c'); g.addColorStop(0.4, '#14213f'); g.addColorStop(1, '#090d1c');
+  x.fillStyle = g; x.fillRect(0, 0, W, H);
+  for (let k = 0; k < 120; k++) { x.fillStyle = `rgba(255,255,255,${Math.random()*0.5+0.1})`; x.beginPath(); x.arc(Math.random()*W, Math.random()*H, Math.random()*2.5+0.6, 0, 7); x.fill(); }
+  try { await document.fonts.ready; } catch(e) {}
+  x.textAlign = 'center';
+  x.fillStyle = '#ffd45e'; rr(x, 330, 150, 420, 76, 38); x.fill();
+  x.fillStyle = '#141a2e'; x.font = '800 30px Poppins, sans-serif'; x.fillText('W E I R D . L I K E T H I S', 540, 199);
+  x.fillStyle = '#aab4cc'; x.font = '700 40px Poppins, sans-serif'; x.fillText('MY BRAIN TYPE', 540, 330);
+  const svg = lumi(t.color, t.mood, key === 'blueprint' ? 0.35 : 1);
+  const img = new Image();
+  await new Promise(res => { img.onload = res; img.onerror = res; img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg); });
+  try { x.drawImage(img, 540 - 240, 380, 480, 840); } catch(e) {}
+  x.fillStyle = '#ffffff'; x.font = '800 104px Poppins, sans-serif'; x.fillText(t.name, 540, 1330, 980);
+  x.fillStyle = '#ffd45e'; x.font = '600 44px Poppins, sans-serif'; x.fillText(t.one, 540, 1405, 980);
+  rows.forEach((r, k) => {
+    const y = 1490 + k * 70;
+    x.textAlign = 'left'; x.fillStyle = '#c9d2e6'; x.font = '600 36px Poppins, sans-serif'; x.fillText(r[0], 150, y + 12);
+    x.fillStyle = '#1d2850'; rr(x, 480, y - 14, 450, 30, 15); x.fill();
+    x.fillStyle = r[2]; rr(x, 480, y - 14, Math.max(30, 450 * r[1] / 4), 30, 15); x.fill();
+  });
+  x.textAlign = 'center'; x.fillStyle = '#ffffff'; x.font = '700 42px Poppins, sans-serif';
+  x.fillText('Which brain are you? 👀', 540, 1825);
+  x.fillStyle = '#aab4cc'; x.font = '600 32px Poppins, sans-serif'; x.fillText('Free test: link in @weird.likethis bio', 540, 1876);
+  cv.toBlob(async blob => {
+    const file = new File([blob], 'my-brain-type.png', { type: 'image/png' });
+    try {
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], text: "I'm " + t.name + " 💡 Which brain are you? @weird.likethis" });
+        cp.textContent = "Shared! Tag @weird.likethis 👀"; return;
+      }
+    } catch(e) {}
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = 'my-brain-type.png';
+    document.body.appendChild(a); a.click(); a.remove();
+    cp.innerHTML = 'Saved! If nothing downloaded, <a href="' + url + '" target="_blank" style="color:#ffd45e">open the card</a> and long-press to save.';
+  }, 'image/png');
+}
+
+stars(); start();
+</script>
+</body>
+</html>
